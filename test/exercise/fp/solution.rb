@@ -10,8 +10,9 @@ module Exercise
         return raitings_sum / sorted_array.size
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        sorted_array = films.filter{ |film| film["rating_kinopoisk"].to_f >= threshold }
+        sorted_array.map{|film| film["name"].to_s.count('и')}.reduce(:+)
       end
     end
   end
